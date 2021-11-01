@@ -711,10 +711,10 @@ func (m *stashModel) handleDocumentBrowsing(msg tea.Msg) tea.Cmd {
 	// Handle keys
 	case tea.KeyMsg:
 		switch msg.String() {
-		case "k", "ctrl+k", "up":
+		case "i", "ctrl+i", "up":
 			m.moveCursorUp()
 
-		case "j", "ctrl+j", "down":
+		case "e", "ctrl+e", "down":
 			m.moveCursorDown()
 
 		// Go to the very start
@@ -734,7 +734,7 @@ func (m *stashModel) handleDocumentBrowsing(msg tea.Msg) tea.Cmd {
 			}
 
 		// Next section
-		case "tab", "L":
+		case "tab", "O":
 			if len(m.sections) == 0 || m.filterState == filtering {
 				break
 			}
@@ -745,7 +745,7 @@ func (m *stashModel) handleDocumentBrowsing(msg tea.Msg) tea.Cmd {
 			m.updatePagination()
 
 		// Previous section
-		case "shift+tab", "H":
+		case "shift+tab", "N":
 			if len(m.sections) == 0 || m.filterState == filtering {
 				break
 			}
@@ -756,7 +756,7 @@ func (m *stashModel) handleDocumentBrowsing(msg tea.Msg) tea.Cmd {
 			m.updatePagination()
 
 		// Open document
-		case "enter":
+		case "enter", "o":
 			m.hideStatusMessage()
 
 			if numDocs == 0 {
@@ -1015,7 +1015,7 @@ func (m *stashModel) handleFiltering(msg tea.Msg) tea.Cmd {
 		case "esc":
 			// Cancel filtering
 			m.resetFiltering()
-		case "enter", "tab", "shift+tab", "ctrl+k", "up", "ctrl+j", "down":
+		case "enter", "tab", "shift+tab", "ctrl+i", "up", "ctrl+e", "down":
 			m.hideStatusMessage()
 
 			if len(m.markdowns) == 0 {

@@ -280,7 +280,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 			return m, tea.Quit
 
-		case "left", "h", "delete":
+		case "left", "n", "delete":
 			if m.state == stateShowDocument && m.pager.state != pagerStateSetNote {
 				cmds = append(cmds, m.unloadDocument()...)
 				return m, tea.Batch(cmds...)
